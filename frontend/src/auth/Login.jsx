@@ -17,19 +17,14 @@ export default function Login() {
     setFormError("");
 
     try {
-      await API.post("/auth/login", { email, password });
+  await API.post("/auth/login", { email, password });
+  setUser({ email });
+  navigate("/workspace");
+} catch (err) {
+  const message = err.response?.data?.error || "Login failed";
+  setFormError(message);
+}
 
-      // mark user as logged in (MVP)
-      setUser({ email });
-
-      toast.success("Login successful");
-      navigate("/workspace");
-    } catch (err) {
-      const message =
-        err.response?.data?.error || "Login failed";
-      setFormError(message);
-      toast.error(message);
-    }
   };
 
   return (

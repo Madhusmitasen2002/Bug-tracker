@@ -14,27 +14,24 @@ export default function Register() {
   const [formError, setFormError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormError("");
+  e.preventDefault();
+  setFormError("");
 
-    try {
-      await API.post("/auth/signup", {
-        name,
-        email,
-        password,
-      });
+  try {
+    await API.post("/auth/signup", {
+      name,
+      email,
+      password,
+    });
 
-      setUser({ email });
-
-      toast.success("Registration successful");
-      navigate("/workspace");
-    } catch (err) {
-      const message =
-        err.response?.data?.error || "Signup failed";
-      setFormError(message);
-      toast.error(message);
-    }
-  };
+    setUser({ email });
+    navigate("/workspace");
+  } catch (err) {
+    const message =
+      err.response?.data?.error || "Signup failed";
+    setFormError(message);
+  }
+};
 
   return (
     <div className="fixed inset-0 flex items-center justify-center min-h-screen 
