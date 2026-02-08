@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, Lock, ArrowRight } from "lucide-react";
-import { toast } from "react-toastify";
 import API from "../api/axios";
 import { useAuth } from "../context/AuthContext";
 
